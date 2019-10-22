@@ -2,8 +2,8 @@
 module.exports = {
     dialect: 'postgres',
     host: 'localhost',
-    username: "admin",
-    password: "senha",
+    username: "user",
+    password: "pass",
     database: 'pi',
     define: {
         //automatiza a criação e a manipulação dos campos created_ad e updated_at nas tabelas

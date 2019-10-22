@@ -16,5 +16,11 @@ module.exports = {
         }
 
         return res.json(ingredient);
+    },
+
+    async index(req,res){
+        const ingredients = await Ingredient.find();
+
+        return res.json(ingredients);
     }
 }

@@ -1,3 +1,4 @@
+//definir as configurações do db SQL
 module.exports = {
     dialect: 'postgres',
     host: 'localhost',

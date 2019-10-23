@@ -6,6 +6,8 @@ const express = require('express');
 const IngredientController = require('./controller/ingredient/controller');
   //Dish
 const DishController = require('./controller/dish/controller');
+  //Table
+const TableController = require('./controller/table/controller');
 
 // definindo responsavel pelas rotas
 const routes = express.Router();
@@ -24,6 +26,13 @@ routes.get('/dish', DishController.index);//listar                 r
 routes.get('/dish/:id', DishController.show);//mostrar             r
 routes.put('/dish/:id', DishController.update);//atualizar         u
 routes.delete('/dish/:id', DishController.destroy);//deletar       d 
+
+  //Table
+routes.post('/table', TableController.store);//criar                 c  
+routes.get('/table', TableController.index);//listar                 r
+routes.get('/table/:id', TableController.show);//mostrar             r
+routes.put('/table/:id', TableController.update);//atualizar         u
+routes.delete('/table/:id', TableController.destroy);//deletar       d 
 
 
 // exportar esse arquivo

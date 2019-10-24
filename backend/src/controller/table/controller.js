@@ -14,7 +14,8 @@ module.exports = {
         let table = await Table.findOne({ number, classification });
         if( !table){
            
-            table = await Table.create( req.body );
+            table = await Table.create( {number, classification, "availability" : true});
+  
         }
 
         return res.json( table );

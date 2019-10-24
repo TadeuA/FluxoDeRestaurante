@@ -8,6 +8,8 @@ const IngredientController = require('./controller/ingredient/controller');
 const DishController = require('./controller/dish/controller');
   //Table
 const TableController = require('./controller/table/controller');
+  //Orders
+const OrdersController = require('./controller/orders/controller');
 
 // definindo responsavel pelas rotas
 const routes = express.Router();
@@ -34,6 +36,12 @@ routes.get('/table/:id', TableController.show);//mostrar             r
 routes.put('/table/:id', TableController.update);//atualizar         u
 routes.delete('/table/:id', TableController.destroy);//deletar       d 
 
+//Orders
+routes.post('/orders', OrdersController.store);//criar                 c  
+routes.get('/orders', OrdersController.index);//listar                 r
+routes.get('/orders/:id', OrdersController.show);//mostrar             r
+routes.put('/orders/:id', OrdersController.update);//atualizar         u
+routes.delete('/orders/:id', OrdersController.destroy);//deletar       d 
 
 // exportar esse arquivo
 module.exports = routes;

@@ -2,17 +2,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-// Importar modulos internos
-const configMongo = require('./config/databaseNoSQL');
+
+
+// Importar modulos internos]
+const mongoConfig = require('./config/databaseNoSQL');
 
 //Conectar ao Servidor db
-mongoose.connect(configMongo,{
+mongoose.connect(mongoConfig,{
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
   
   //Importar rotas
 const routes = require('./routes');
+
 
 
 // criando aplicação

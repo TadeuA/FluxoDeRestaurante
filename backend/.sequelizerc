@@ -4,7 +4,7 @@ const path = require('path');
 
 module.export ={
     config: path.resolve(__dirname, 'src','config','databaseSQL.js'),
-    'migrations-path': path.resolve(__dirname, 'src', database', 'sql', 'migrations'),
+    'migrations-path': path.resolve(__dirname, 'src', 'database', 'sql', 'migrations'),
 };
 
 //yarn sequelize db:create    rodar no terminal para inicializar o db

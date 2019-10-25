@@ -10,7 +10,8 @@ const routes = require('./routes');
 
 // criando aplicação
 const app = express();
-
+//Dessabilitar X-Powered-By pois é um risco conhecido de segurança
+app.disable("X-Powered-By");
 
 //definir o usos da aplicação
   //uso de json

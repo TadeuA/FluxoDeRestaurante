@@ -1,22 +1,18 @@
 // Importar modulos externos
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
 
-
-
-// Importar modulos internos]
-const mongoConfig = require('./config/databaseNoSQL');
+// Importar modulos internos
+const mongoConfig = require("./config/databases/databaseNoSQL");
 
 //Conectar ao Servidor db
-mongoose.connect(mongoConfig,{
+mongoose.connect(mongoConfig, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 });
-  
-  //Importar rotas
-const routes = require('./routes');
 
-
+//Importar rotas
+const routes = require("./routes");
 
 // criando aplicação
 const app = express();
@@ -24,9 +20,9 @@ const app = express();
 app.disable("X-Powered-By");
 
 //definir o usos da aplicação
-  //uso de json
+//uso de json
 app.use(express.json());
-  //uso de rotas
+//uso de rotas
 app.use(routes);
 
 // definir porta da aplicação

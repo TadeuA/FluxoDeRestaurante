@@ -1,9 +1,16 @@
 //Importar modulos externos
-const Sequelize = require('sequelize');
-const path = require('path');//para prevenir que encontre o caminho
+const Sequelize = require("sequelize");
+const path = require("path"); //para prevenir que encontre o caminho
 
 //importar a configuração do db SQL
-const dbConfig = require(path.resolve(__dirname,'..','..','config','databaseSQL.js'));
+const dbConfig = require(path.resolve(
+  __dirname,
+  "..",
+  "..",
+  "config",
+  "databases",
+  "databaseSQL.js"
+));
 
 //criar o db
 const connectionSQL = new Sequelize(dbConfig);

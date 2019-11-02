@@ -1,6 +1,5 @@
 // Importar dependencias externas
 const express = require('express');
-//lembrar de adicionar o multer
 const multer = require('multer');
 
 // Importar modulos internos
@@ -17,7 +16,7 @@ const TableController = require('./controller/table/controller');
 const OrdersController = require('./controller/orders/controller');
  //Users
 const UsersController = require('./controller/user/controller');
-const UsersCheck = require('./controller/user/check');
+const UsersEdit = require('./controller/user/edit');
 const NewPass = require('./controller/user/newPass');
 
 
@@ -63,8 +62,7 @@ routes.get('/users/:id', UsersController.show);//mostrar             r
 routes.put('/users/:id', UsersController.update);//atualizar         u
 routes.delete('/users/:id', UsersController.destroy);//deletar       d 
 routes.get('/users', UsersController.index);//listar
-routes.get('/userscheck/', UsersCheck.show);//vereficar
-routes.put('/userscheck/:id', uplaod.single('thumbnail'), UsersCheck.update);//atualizar foto     
+routes.put('/userscheck/:id', upload.single('thumbnail'), UsersEdit.update);//atualizar foto     
 routes.put('/usersnp/:id', NewPass.update);//atualizar senha
 
            

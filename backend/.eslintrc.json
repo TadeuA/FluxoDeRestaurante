@@ -1,0 +1,70 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": ["standard"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    //quebra de linha em conchetes
+    "eslint array-bracket-newline": [
+      "error",
+      "always",
+      { "multiline": false, "minItems": 1 }
+    ],
+    //determina espaços entre colchetes de literais de matriz e chaves de seus elementos literais de objeto [{ou}]
+    //determina espaços entre colchetes de literais de matriz e colchetes de seus elementos literais de matriz [[ou]]
+    "eslint array-bracket-spacing": [
+      "error",
+      "always",
+      { "objectsInArrays": false, "arraysInArrays": false }
+    ],
+    //quebras de linha se o número de elementos for pelo menos o número inteiro especificado
+    "eslint array-element-newline": [
+      "error",
+      "consistent",
+      { "multiline": false, "minItems": 1 }
+    ],
+    //aplicará espaçamento consistente diretamente entre parênteses
+    "eslint space-in-parens": [
+      "error",
+      "always",
+      { "exceptions": ["{}", "[]", "()"] }
+    ],
+    //eforça o espaçamento ao redor dos dois pontos nas propriedades literais do objeto.
+    "eslint key-spacing": [
+      "error",
+      {
+        "multiLine": {
+          "beforeColon": true,
+          "afterColon": true,
+          "align": "colon"
+        }
+      }
+    ],
+    //aplica quebras de linha consistentes dentro de chaves de literais de objetos ou atribuições de desestruturação
+    "eslint object-curly-newline": [
+      "error",
+      {
+        "ImportDeclaration": "never",
+        "ExportDeclaration": "never",
+        "minProperties": 2
+      }
+    ],
+    //preenchimento de linha vazia consistente dentro de blocos
+    "eslint padded-blocks": [
+      "error",
+      { "blocks": "never", "switches": "never", "allowSingleLineBlocks": true }
+    ],
+    // Esta regra impõe o uso consistente de ponto e vírgula.
+    "eslint semi": "error"
+  }
+}

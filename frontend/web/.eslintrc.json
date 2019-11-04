@@ -1,6 +1,6 @@
 {
   //Adicionar funcionalidades do babel
-  "parser": "babel-eslint",
+  //"parser": "babel-eslint",
 
   //ambientes onde rodaram o projeto
   //dando acesso a variaveis globais dessas tech

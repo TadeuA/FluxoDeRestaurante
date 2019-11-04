@@ -1,22 +1,48 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+/*resetar css*/
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
+html,
+body,
+#root {
+  min-height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background: #3c4556;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+body,
+input,
+button {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+div#navBar {
+  width: 75px;
+  height: 650px;
+  background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+button#profile {
+  background: url("./assets/profile.jpg");
+  background-size: contain;
+}
+
+.btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  border: 0px solid;
+  margin-top: 10px;
 }

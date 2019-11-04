@@ -1,0 +1,37 @@
+#alingIngredients {
+  display: flex;
+  flex-direction: row;
+}
+#containerIngredients {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    "sidenav advert"
+    "sidenav footer";
+  width: 100%;
+}
+
+#containerIngredients .list {
+  background: #f00;
+  width: 100%;
+}
+
+#containerIngredients .list .title {
+  border: 1px solid #2c3952;
+  background: #2c3952;
+  color: #fff;
+}
+
+.sidenav {
+  grid-area: sidenav;
+}
+
+.advert {
+  grid-area: advert;
+  border-radius: 5%;
+}
+
+.footer {
+  grid-area: footer;
+  border-radius: 5%;
+}

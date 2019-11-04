@@ -1,0 +1,63 @@
+#containerDish {
+  display: flex;
+  flex-direction: row;
+}
+
+#alingDish {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 10px;
+  width: 100%;
+}
+
+#alingDish .list {
+  background: #f00;
+  width: 100%;
+}
+
+#alingDish .list .title {
+  background: #2c3952;
+  font-size: 18pt;
+}
+#alingDish .list .title button {
+  margin-left: 5px;
+  width: 19%;
+}
+
+#alingDish .list #select {
+  margin-top: 10px;
+  font-size: 16pt;
+}
+#alingDish .list #select input {
+  font-size: 16pt;
+}
+
+#alingDish .list #labDish {
+  margin-top: 10px;
+  font-size: 16pt;
+}
+#alingDish .list #labDish fieldset {
+  max-height: 60px;
+  width: 96%;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  background: #fff;
+}
+#alingDish .list #labDish fieldset input {
+  font-size: 16pt;
+  width: 96%;
+  border: 0px;
+}
+#alingDish .list #labDish fieldset button {
+  font-size: 18pt;
+  width: 20px;
+}
+
+#alingDish .list #labDish #newDish {
+  width: 96%;
+  font-size: 18pt;
+  padding: 10px;
+  margin-left: 10px;
+  position: relative;
+  bottom: -300px;
+}

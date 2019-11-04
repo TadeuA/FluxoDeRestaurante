@@ -16,7 +16,7 @@ export default function navBar() {
         <button id="profile" className="btn"></button>
       </Link>
       <Link to="/orders">
-        <button id=";order" className="btn">
+        <button id="order" className="btn">
           <img src={order} alt="order" />
         </button>
       </Link>

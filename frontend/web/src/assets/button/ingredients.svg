@@ -35,7 +35,8 @@
      inkscape:window-height="416"
      inkscape:window-x="495"
      inkscape:window-y="197"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="0"
+     showguides="false" />
   <metadata
      id="metadata3717">
     <rdf:RDF>
@@ -52,12 +53,6 @@
      inkscape:label="Camada 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <circle
-       style="fill:#00ff00;stroke-width:1.08055651"
-       id="path3742"
-       cx="27.559765"
-       cy="27.535936"
-       r="27.509871" />
     <g
        id="g8"
        transform="matrix(0.07222315,0,0,0.07222315,13.870903,4.7074336)"

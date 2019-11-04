@@ -52,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -60,12 +60,6 @@
      inkscape:label="Camada 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <circle
-       style="fill:#ff0000;stroke-width:1.08055651"
-       id="path3742"
-       cx="27.559765"
-       cy="27.535936"
-       r="27.509871" />
     <path
        style="stroke-width:0.67394614;fill:#ffffff"
        inkscape:connector-curvature="0"

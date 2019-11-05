@@ -8,6 +8,8 @@ import Ingredients from "./pages/ingredients";
 import Table from "./pages/table";
 import Orders from "./pages/orders";
 import Profile from "./pages/profile";
+import Login from "./pages/login";
+import SingIn from "./pages/singIn";
 
 export default function Routes() {
   return (
@@ -18,7 +20,9 @@ export default function Routes() {
         <Route path="/ingredients" component={Ingredients} />
         <Route path="/table" component={Table} />
         <Route path="/orders" component={Orders} />
-        <Route path="/" exact component={Profile} />
+        <Route path="/" exact component={Login} />
+        <Route path="/profile" exact component={Profile} />
+        <Route path="/singin" exact component={SingIn} />
       </Switch>
     </BrowserRouter>
   );

@@ -1,6 +1,7 @@
 // Importar modulos externos
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // Importar modulos internos
 const mongoConfig = require("./config/databases/databaseNoSQL");
@@ -20,6 +21,8 @@ const app = express();
 app.disable("X-Powered-By");
 
 //definir o usos da aplicação
+//definir permições de acesso a api
+app.use(cors());
 //uso de json
 app.use(express.json());
 //uso de rotas

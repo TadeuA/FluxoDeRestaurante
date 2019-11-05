@@ -19,10 +19,12 @@ module.exports = {
         user = await User.create({ email, password });
         return res.json(user);
       } else {
-        return res.json({ menssage: true });
+        return res.json({ badEmail: true });
       }
     } else {
-      return res.json({ message: false });
+      return res.json({
+        badComparison: true
+      });
     }
   },
 

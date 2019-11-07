@@ -1,0 +1,49 @@
+#containerSingIn {
+  margin: 80px auto 0;
+  max-width: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 4px;
+  padding: 30px;
+}
+#containerSingIn form,
+#containerSingIn form fieldset input,
+#containerSingIn form button {
+  font-size: 14pt;
+}
+
+#containerSingIn form {
+  margin: 10px;
+  width: 100%;
+}
+#containerSingIn form fieldset {
+  background: #fff;
+  margin-bottom: 5px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+#containerSingIn form fieldset input {
+  border: 0px;
+  width: 100%;
+}
+#containerSingIn form button {
+  width: 100%;
+  border: 0;
+  border-radius: 2px;
+  height: 42px;
+  font-weight: bold;
+  background: tomato;
+  color: #fff;
+  cursor: pointer;
+}
+
+goToSingIn:link {
+  text-decoration: none;
+}
+#goToSingIn {
+  color: tomato;
+}

@@ -1,0 +1,50 @@
+#containerLogin {
+  margin: 80px auto 0;
+  max-width: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 4px;
+  padding: 30px;
+}
+#containerLogin form,
+#containerLogin form fieldset input,
+#containerLogin form button {
+  font-size: 14pt;
+}
+
+#containerLogin form {
+  margin: 10px;
+  width: 100%;
+}
+#containerLogin form fieldset {
+  background: #fff;
+  margin-bottom: 5px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+#containerLogin form fieldset input {
+  border: 0px;
+  width: 100%;
+}
+#containerLogin .btn {
+  width: 100%;
+  border: 0;
+  border-radius: 2px;
+  height: 42px;
+  font-weight: bold;
+  background: tomato;
+  color: #fff;
+  cursor: pointer;
+}
+
+#containerLogin #goToSingIn button {
+  padding: 10px;
+  height: 32px;
+  background: lawngreen;
+  color: #3c4556;
+  margin-left: 210%;
+}

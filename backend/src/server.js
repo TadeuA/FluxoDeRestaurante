@@ -9,7 +9,8 @@ const mongoConfig = require("./config/databases/databaseNoSQL");
 //Conectar ao Servidor db
 mongoose.connect(mongoConfig, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 //Importar rotas

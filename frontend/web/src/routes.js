@@ -10,6 +10,7 @@ import Orders from "./pages/orders";
 import Profile from "./pages/profile";
 import Login from "./pages/login";
 import SingIn from "./pages/singIn";
+import Register from "./pages/register";
 
 export default function Routes() {
   return (
@@ -21,8 +22,9 @@ export default function Routes() {
         <Route path="/table" component={Table} />
         <Route path="/orders" component={Orders} />
         <Route path="/" exact component={Login} />
-        <Route path="/profile" exact component={Profile} />
-        <Route path="/singin" exact component={SingIn} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/singin" component={SingIn} />
+        <Route path="/register" component={Register} />
       </Switch>
     </BrowserRouter>
   );

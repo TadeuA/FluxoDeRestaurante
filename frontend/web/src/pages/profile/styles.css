@@ -1,0 +1,19 @@
+#containerProfile {
+  display: flex;
+  flex-direction: row;
+}
+
+#panel {
+  border: 2px solid #fff;
+  width: 100%;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#frist header {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  background-size: cover;
+}

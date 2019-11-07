@@ -38,5 +38,21 @@ module.exports = {
     } else {
       return res.json({ erro: "Senha atual não confere!" });
     }
+  },
+
+  async show(req, res) {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (user) {
+      if (password === user.password) {
+        return res.json(user);
+      } else {
+        return res.json({ badPassword: true });
+      }
+    } else {
+      return res.json({ badEmail: true });
+    }
   }
 };

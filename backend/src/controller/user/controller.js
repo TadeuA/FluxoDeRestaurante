@@ -30,7 +30,8 @@ module.exports = {
 
   // listar users
   async index(req, res) {
-    const users = await User.find();
+    const users = await User.find(req.params.id);
+    console.log(req.params.id);
 
     return res.json(users);
   },
@@ -44,24 +45,24 @@ module.exports = {
 
   //Atualizar user
   async update(req, res) {
-    const { nome, document, classification, email } = req.body;
-    const user = await User.findById(req.params.id);
+    const { name, document, thumbnail } = req.body;
+    const { classification } = req.headers;
+    let user = await User.findById(req.params.id);
 
     if (!user) {
-      return res.status(400).json({ error: "Usuário não existe!" });
+      return res.json({ error: true });
     }
-    const { thumbnail, password } = user;
-
+    const { email, password } = user;
     const upUser = {
       thumbnail,
       email,
       password,
-      nome,
+      name,
       document,
       classification
     };
 
-    user = await User.findByIdAndUpdate(req.params.id, upUser, { new: true });
+    user = await User.findOneAndUpdate(req.params.id, upUser, { new: true });
 
     return res.json(user);
   },

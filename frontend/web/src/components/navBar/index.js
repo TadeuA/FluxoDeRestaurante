@@ -12,7 +12,7 @@ import table from "../../assets/button/table.svg";
 export default function navBar() {
   return (
     <div id="navBar">
-      <Link to="/">
+      <Link to="/profile">
         <button id="profile" className="btn"></button>
       </Link>
       <Link to="/orders">

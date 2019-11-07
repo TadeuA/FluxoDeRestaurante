@@ -10,6 +10,7 @@ const uploadConfig = require("./config/upload");
 const IngredientController = require("./controller/ingredient/controller");
 //Dish
 const DishController = require("./controller/dish/controller");
+const DishForIngredient = require("./controller/dish/forIngredients");
 //Table
 const TableController = require("./controller/table/controller");
 //Orders
@@ -38,6 +39,7 @@ routes.get("/dish/:id", DishController.show); //mostrar             r
 routes.put("/dish/:id", DishController.update); //atualizar         u
 routes.delete("/dish/:id", DishController.destroy); //deletar       d
 routes.get("/dish", DishController.index); //listar
+routes.get("/foringredient/:ingredient", DishForIngredient.index); //listar por ingrediente
 
 //Table
 routes.post("/table", TableController.store); //criar                 c

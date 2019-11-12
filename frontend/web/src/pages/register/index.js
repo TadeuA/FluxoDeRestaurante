@@ -33,7 +33,9 @@ export default function Register({ history }) {
       },
       { headers: { classification: "single" } }
     );
-    console.log(response);
+    localStorage.removeItem("user");
+    localStorage.setItem("user", JSON.stringify(response.data));
+
     history.push("/profile");
   }
 

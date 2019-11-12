@@ -4,7 +4,6 @@
 }
 
 #panel {
-  border: 2px solid #fff;
   width: 100%;
   padding: 10px;
   display: grid;
@@ -16,4 +15,12 @@
   height: 200px;
   border-radius: 100%;
   background-size: cover;
+}
+#frist .open {
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background: tomato;
+  border: none;
+  cursor: pointer;
 }

@@ -22,7 +22,10 @@ module.exports = {
 
   // listar dishs
   async index(req, res) {
-    const dishs = await Dish.find();
+    const dishs = await Dish.find().populate({
+      path: "ingredients",
+      select: "name"
+    });
     //mostrar informações sobre os ingredient
 
     return res.json(dishs);
@@ -30,7 +33,10 @@ module.exports = {
 
   // Buscar um dish
   async show(req, res) {
-    const dish = await Dish.findById(req.params.id);
+    const dish = await Dish.findById(req.params.id).populate({
+      path: "ingredients",
+      select: "name"
+    });
 
     return res.json(dish);
   },

@@ -16,6 +16,8 @@ body,
 body {
   background: #3c4556;
   -webkit-font-smoothing: antialiased !important;
+  display: flex;
+  flex-direction: column;
 }
 
 body,

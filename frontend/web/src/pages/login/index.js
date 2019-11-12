@@ -23,8 +23,7 @@ export default function Login({ history }) {
   }
 
   function handleLogin(logUser) {
-    const { _id } = logUser;
-    localStorage.setItem("user", _id);
+    localStorage.setItem("user", JSON.stringify(logUser));
     history.push("/profile");
   }
   return (

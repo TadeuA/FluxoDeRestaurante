@@ -40,6 +40,7 @@ routes.put("/dish/:id", DishController.update); //atualizar         u
 routes.delete("/dish/:id", DishController.destroy); //deletar       d
 routes.get("/dish", DishController.index); //listar
 routes.get("/foringredient/:ingredient", DishForIngredient.index); //listar por ingrediente
+routes.get("/foringredient", DishForIngredient.show); //buscar por nome
 
 //Table
 routes.post("/table", TableController.store); //criar                 c

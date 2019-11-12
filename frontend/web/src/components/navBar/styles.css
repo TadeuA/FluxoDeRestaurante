@@ -7,11 +7,6 @@ div#navBar {
   align-items: center;
 }
 
-button#profile {
-  background: url("../../assets/profile.jpg");
-  background-size: cover;
-}
-
 button.btn {
   width: 55px;
   height: 55px;
@@ -40,4 +35,7 @@ div#navBar button:hover {
 }
 #table {
   background: #808000;
+}
+#restaurant {
+  background: #808;
 }

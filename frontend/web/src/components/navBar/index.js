@@ -8,12 +8,15 @@ import ingredients from "../../assets/button/ingredients.svg";
 import order from "../../assets/button/order.svg";
 import dish from "../../assets/button/dish.svg";
 import table from "../../assets/button/table.svg";
+import store from "../../assets/button/store.svg";
 
 export default function navBar() {
   return (
     <div id="navBar">
-      <Link to="/profile">
-        <button id="profile" className="btn"></button>
+      <Link to="/restaurant">
+        <button id="restaurant" className="btn">
+          <img src={store} alt="order" />
+        </button>
       </Link>
       <Link to="/orders">
         <button id="order" className="btn">

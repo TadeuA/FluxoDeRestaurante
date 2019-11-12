@@ -11,6 +11,7 @@ import Profile from "./pages/profile";
 import Login from "./pages/login";
 import SingIn from "./pages/singIn";
 import Register from "./pages/register";
+import Restaurant from "./pages/restaurant";
 
 export default function Routes() {
   return (
@@ -25,6 +26,7 @@ export default function Routes() {
         <Route path="/profile" component={Profile} />
         <Route path="/singin" component={SingIn} />
         <Route path="/register" component={Register} />
+        <Route path="/restaurant" component={Restaurant} />
       </Switch>
     </BrowserRouter>
   );

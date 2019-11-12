@@ -1,0 +1,49 @@
+div#containerMenu {
+  display: flex;
+  flex-direction: row;
+}
+#containerMenu ul {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  list-style: none;
+}
+#one {
+  background: #888888;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 190px;
+}
+.title {
+  max-height: 20px;
+}
+#containerMenu ul li ul {
+  margin-bottom: 10px;
+  display: flex;
+}
+#containerMenu ul li ul li {
+  margin-right: 5px;
+}
+@media (max-width: 1200px) {
+  #containerMenu ul {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media (max-width: 1150px) {
+  #containerMenu ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 920px) {
+  #containerMenu ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  #containerMenu ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,50 @@
+#containerTable {
+  display: flex;
+  flex-direction: row;
+}
+.grid {
+  width: 100%;
+  display: grid;
+  grid-auto-columns: repeat(2, 1fr);
+}
+
+#listTable {
+  min-width: 200px;
+  background: chartreuse;
+}
+#listTable ul li {
+  display: grid;
+  grid-template-columns: repeat(3, 5fr) repeat(2, 1fr);
+}
+#listTable span {
+  margin: 5px;
+}
+#listTable button {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 2px;
+}
+#listTable button.exclude:hover {
+  background: #f00;
+  border-radius: 5px;
+}
+#listTable button.direction:hover {
+  background: #4fba6f;
+  border-radius: 5px;
+}
+
+#createTable form fieldset {
+  background: #fff;
+  min-width: 50px;
+  max-width: 70%;
+  border-radius: 5px;
+}
+
+#createTable form fieldset input {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+}

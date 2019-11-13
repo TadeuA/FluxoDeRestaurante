@@ -52,13 +52,14 @@ export default function Ingredients() {
   //criar novo ingrediente
   async function handleSubmit(event) {
     event.preventDefault();
-    const newIngredient = await api.post(`/ingredients`, { name });
-    setIngredient(ingredient.push(newIngredient));
+    const response = await api.post(`/ingredients`, { name });
+    ingredient.push(response.data)
+    setIngredient(ingredient);
     window.alert(`${name} adicionado a lista de ingredientes!`);
     setName("");
   }
   //atualizar lista de ingredientes
-  async function loadIngredients() {
+  function loadIngredients() {
     setIngredient(JSON.parse(localStorage.getItem("ingredients")));
   }
   useEffect(() => {
@@ -94,9 +95,10 @@ export default function Ingredients() {
         });
         await api.delete(`/ingredients/${ingre._id}`);
         const index = ingredient.indexOf(ingre);
+        ingredient.splice(index, 1)
         localStorage.setItem(
           "ingredients",
-          JSON.stringify(ingredient.splice(index, 1))
+          JSON.stringify(ingredient)
         );
         localStorage.setItem("dishs", JSON.stringify(Dishs));
 

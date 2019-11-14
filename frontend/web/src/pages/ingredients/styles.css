@@ -41,12 +41,17 @@
   list-style-type: none;
   overflow: auto;
 }
-#containerIngredients .list .ingredient-list li {
-  display: grid;
-  grid-template-columns: 5fr 1fr 1fr;
+
+#containerIngredients .list .ingredient-list li ul {
   padding: 2px;
+  list-style-type: none;
 }
 
+#containerIngredients .list .ingredient-list li ul li {
+  display: grid;
+  grid-template-columns: 5fr repeat(2, 1fr);
+  padding: 2px;
+}
 #containerIngredients .list .ingredient-list li button {
   width: 20px;
   height: 20px;

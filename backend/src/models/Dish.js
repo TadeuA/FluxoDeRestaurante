@@ -10,7 +10,11 @@ const DishSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Ingredient"
     }
-  ]
+  ],
+  classification :{
+    type: mongoose.Schema.Types.ObjectId,
+      ref: "Type"
+  }
 });
 
 module.exports = mongoose.model("Dish", DishSchema);

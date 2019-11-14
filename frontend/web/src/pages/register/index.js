@@ -11,7 +11,9 @@ export default function Register({ history }) {
   const [phDoc, setPhDoc] = useState("");
 
   async function loadRegister() {
-    const response = api.get(`/user/${user_id}`);
+
+    const response = await api.get(`/users/${user_id}`);
+
     !response.data.name === null || !response.data.name === undefined
       ? setPhName(response.data.name)
       : setPhName("Seu Nome");
@@ -23,7 +25,9 @@ export default function Register({ history }) {
   loadRegister();
   async function handleSubmit(event) {
     event.preventDefault();
-
+    let permission =JSON.parse( localStorage.getItem("permission"))
+    permission = permission._id
+    console.log(permission)
     const response = await api.put(
       `/users/${user_id}`,
       {
@@ -31,11 +35,11 @@ export default function Register({ history }) {
         document,
         thumbnail: ""
       },
-      { headers: { classification: "single" } }
+      { headers: { classification:permission } }
     );
     localStorage.removeItem("user");
     localStorage.setItem("user", JSON.stringify(response.data));
-
+      console.log(response)
     history.push("/profile");
   }
 

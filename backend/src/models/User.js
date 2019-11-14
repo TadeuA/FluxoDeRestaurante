@@ -9,7 +9,10 @@ const UserSchema = new mongoose.Schema({
     email: String,
     password: String,
     document: String,
-    classification: String,
+    classification :{
+      type: mongoose.Schema.Types.ObjectId,
+        ref: "Type"
+    }
 });
 
 module.exports = mongoose.model('User', UserSchema);

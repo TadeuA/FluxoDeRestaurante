@@ -13,7 +13,8 @@ export default function SingIn({ history }) {
     const response = await api.post("/users", {
       email,
       password,
-      confirm
+      confirm,
+      classification:"5dcc4dec794fab588f151a91"
     });
     response.data.hasOwnProperty("badComparison")
       ? window.alert("As senhas não são idênticas!")
@@ -23,8 +24,10 @@ export default function SingIn({ history }) {
   }
 
   function handleRegister(newUser) {
-    const { _id } = newUser;
+    const { _id, classification } = newUser;
     localStorage.setItem("user", _id);
+
+    localStorage.setItem("permission",JSON.stringify(classification));
     history.push("/register");
   }
 

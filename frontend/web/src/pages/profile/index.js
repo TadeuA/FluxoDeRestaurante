@@ -26,9 +26,11 @@ export default function Profile({ history }) {
     const dishs = await api.get("/dish");
     const ingredients = await api.get("/ingredients");
     const tables = await api.get("/table");
+    const classification = await api.get("/types");
     localStorage.setItem("dishs", JSON.stringify(dishs.data));
     localStorage.setItem("ingredients", JSON.stringify(ingredients.data));
     localStorage.setItem("tables", JSON.stringify(tables.data));
+    localStorage.setItem("classification", JSON.stringify(classification.data))
     history.push("/restaurant");
   }
   return (

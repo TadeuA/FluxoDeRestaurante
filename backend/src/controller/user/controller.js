@@ -16,7 +16,9 @@ module.exports = {
       //vereficação para ver se o email não foi criado neste instante e se não existir cria-o
       let user = await User.findOne({ email });
       if (!user) {
-        user = await User.create({ email, password });
+        const {classification}= req.body
+        user = await User.create({ email, password, classification });
+        await user.populate("classification").execPopulate();
         return res.json(user);
       } else {
         return res.json({ badEmail: true });
@@ -30,7 +32,7 @@ module.exports = {
 
   // listar users
   async index(req, res) {
-    const users = await User.find(req.params.id);
+    const users = await User.find(req.params.id).populate("classification").exec();
     console.log(req.params.id);
 
     return res.json(users);
@@ -38,7 +40,7 @@ module.exports = {
 
   // Buscar um user
   async show(req, res) {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id).populate("classification").exec();
 
     return res.json(user);
   },
@@ -62,7 +64,7 @@ module.exports = {
       classification
     };
 
-    user = await User.findOneAndUpdate(req.params.id, upUser, { new: true });
+    user = await User.findOneAndUpdate(req.params.id, upUser, { new: true }).populate("classification").exec();
 
     return res.json(user);
   },

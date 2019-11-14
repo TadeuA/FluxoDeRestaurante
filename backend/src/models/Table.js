@@ -5,8 +5,11 @@ const mongoose = require("mongoose");
 const TableSchema = new mongoose.Schema({
   number: Number,
   vacancies: Number,
-  classification: String,
-  availability: Boolean
+  availability: Boolean,
+  classification :{
+    type: mongoose.Schema.Types.ObjectId,
+      ref: "Type"
+  }
 });
 
 module.exports = mongoose.model("Table", TableSchema);

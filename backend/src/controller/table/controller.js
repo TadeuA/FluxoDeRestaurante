@@ -21,25 +21,25 @@ module.exports = {
     if (!table) {
       table = await Table.create({
         number,
-        classification,
         vacancies,
-        availability: true
+        availability: true,
+        classification
       });
     }
-
+    await table.populate("classification").exec()
     return res.json(table);
   },
 
   // listar tables
   async index(req, res) {
-    const tables = await Table.find();
+    const tables = await Table.find().populate("classification").exec();
 
     return res.json(tables);
   },
 
   // Buscar um table
   async show(req, res) {
-    const table = await Table.findById(req.params.id);
+    const table = await Table.findById(req.params.id).populate("classification").exec();
 
     return res.json(table);
   },
@@ -48,7 +48,7 @@ module.exports = {
   async update(req, res) {
     const table = await Table.findByIdAndUpdate(req.params.id, req.body, {
       new: true
-    });
+    }).populate("classification").exec();
 
     return res.json(table);
   },

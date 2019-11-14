@@ -1,0 +1,43 @@
+#containerRestaurant {
+  display: flex;
+  flex-direction: row;
+}
+.options ul {
+  list-style-type: none;
+  position: relative;
+  width: 200px;
+  border-radius: 5px;
+  text-align: center;
+}
+.options > ul li {
+  margin: 5px;
+  padding: 2px;
+  border-radius: 5px;
+  background: tomato;
+  cursor: pointer;
+  width: 90%;
+}
+.options ul li ul {
+  margin: 2px;
+  position: absolute;
+  visibility: hidden;
+}
+.options ul li ul li {
+  float: left;
+  margin: 5px;
+  background: rgb(219, 115, 96);
+  width: 100%;
+}
+.options button {
+  border: none;
+  padding: 5px;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+}
+.options ul li:hover ul {
+  visibility: visible;
+}
+.options ul li ul li:hover {
+  background: tomato;
+}

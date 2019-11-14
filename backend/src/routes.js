@@ -19,6 +19,8 @@ const OrdersController = require("./controller/orders/controller");
 const UsersController = require("./controller/user/controller");
 const UsersEdit = require("./controller/user/edit");
 const NewPass = require("./controller/user/newPass");
+//Types
+const TypeController = require("./controller/type/controller");
 
 // definindo responsavel pelas rotas
 const routes = express.Router();
@@ -65,6 +67,13 @@ routes.get("/users", UsersController.index); //listar
 routes.put("/userscheck/:id", upload.single("thumbnail"), UsersEdit.update); //atualizar foto
 routes.put("/usersnp/:id", NewPass.update); //atualizar senha
 routes.post("/usersnp", NewPass.show); //logar
+
+//Type
+routes.post("/types", TypeController.store); //criar                 c
+routes.get("/types/:id", TypeController.show); //mostrar             r
+routes.put("/types/:id", TypeController.update); //atualizar         u
+routes.delete("/types/:id", TypeController.destroy); //deletar       d
+routes.get("/types", TypeController.index); //listar
 
 // exportar esse arquivo
 module.exports = routes;

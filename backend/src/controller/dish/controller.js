@@ -13,7 +13,11 @@ module.exports = {
     //vereficação para ver se o dishe ja existe e se não existir cria-o
     let dish = await Dish.findOne({ name });
     if (!dish) {
-      dish = await Dish.create(req.body);
+      dish = await Dish.create(req.body)
+      await dish.populate({
+        path: "ingredients",
+        select: "name"
+      }).populate("classification").execPopulate()
       return res.json(dish);
     }
 
@@ -25,7 +29,7 @@ module.exports = {
     const dishs = await Dish.find().populate({
       path: "ingredients",
       select: "name"
-    });
+    }).populate("classification").exec();
     //mostrar informações sobre os ingredient
 
     return res.json(dishs);
@@ -36,7 +40,7 @@ module.exports = {
     const dish = await Dish.findById(req.params.id).populate({
       path: "ingredients",
       select: "name"
-    });
+    }).populate("classification").exec();
 
     return res.json(dish);
   },
@@ -45,7 +49,10 @@ module.exports = {
   async update(req, res) {
     const dish = await Dish.findByIdAndUpdate(req.params.id, req.body, {
       new: true
-    });
+    }).populate({
+      path: "ingredients",
+      select: "name"
+    }).populate("classification").exec();
 
     return res.json(dish);
   },

@@ -5,8 +5,10 @@ import "./styles.css";
 
 export default function Menu() {
   const [dishs, setDishs] = useState([]);
+  const [classifications, setClassifications] = useState([]);
   useEffect(() => {
     setDishs(JSON.parse(localStorage.getItem("dishs")));
+    setClassifications(JSON.parse(localStorage.getItem("classification")));
   }, []);
   return (
     <>
@@ -14,24 +16,36 @@ export default function Menu() {
       <div id="containerMenu">
         <NavBar />
         <ul>
-          {dishs.map(dish => (
-            <li key={dish._id} id="one">
-              <header className="title">
-                <strong>{dish.name}</strong>
-              </header>
+          {classifications.map(item => {
+            if(item.section === "dish"){
+              return (
+                <li key={item._id}>
+                  <h2>{item.classification}</h2>
+                  <ul>
+                    {dishs.map(dish => {
+                      if(dish.classification._id === item._id){
+                        return (
 
-              <ul>
-                {dish.ingredients &&
-                  dish.ingredients.map(ingredient => (
-                    <li key={ingredient._id}>
-                      <span>{ingredient.name}</span>
-                    </li>
-                  ))}
-              </ul>
-              <span>R$ {dish.price}</span>
-            </li>
-          ))}
+                          <li key={dish._id} id="one">
+                            <header className="title">
+                              <strong>{dish.name}</strong>
+                            </header>
+                            {dish.ingredients &&
+                            dish.ingredients.map(ingredient => (
+                              <li key={ingredient._id}>
+                                <span>{ingredient.name}</span>
+                              </li>
+                            ))}
+                            <span>R$ {dish.price}</span>
+                          </li>
+
+                    )}})}
+                  </ul>
+                </li>
+          )}})}
         </ul>
+
+
       </div>
     </>
   );

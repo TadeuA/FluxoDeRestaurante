@@ -16,34 +16,39 @@ div#containerMenu {
   flex-direction: column;
   justify-content: space-between;
   min-width: 190px;
+  max-height: 190px;
 }
 .title {
   max-height: 20px;
 }
-#containerMenu ul li ul {
+#containerMenu > ul {
+  display: flex;
+  flex-direction: column;
+}
+#one ul {
   margin-bottom: 10px;
   display: flex;
 }
-#containerMenu ul li ul li {
+#one ul li {
   margin-right: 5px;
 }
 @media (max-width: 1200px) {
-  #containerMenu ul {
+  #containerMenu ul li ul {
     grid-template-columns: repeat(5, 1fr);
   }
 }
 @media (max-width: 1150px) {
-  #containerMenu ul {
+  #containerMenu ul li ul {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 @media (max-width: 920px) {
-  #containerMenu ul {
+  #containerMenu ul li ul {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (max-width: 720px) {
-  #containerMenu ul {
+  #containerMenu ul li ul {
     grid-template-columns: repeat(2, 1fr);
   }
 }

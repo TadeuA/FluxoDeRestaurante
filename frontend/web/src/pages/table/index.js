@@ -12,6 +12,7 @@ import exclude from "../../assets/button/destroy.svg";
 export default function Table() {
   const [tables, setTables]= useState([]);
   const { register, handleSubmit, errors } = useForm();
+  const [classifications, setClassifications]= useState([])
 
   const onSubmit = async data => {
     const { number, classification, vacancies } = data;
@@ -23,33 +24,50 @@ export default function Table() {
   tables.push(response.data)
 
 
-    setTables(tables);
+
     localStorage.setItem("tables", JSON.stringify(tables))
+    setTables(JSON.parse(localStorage.getItem("tables")));
     window.alert(`mesa ${number} em ${classification} foi adicionado a lista de mesas!`);
 
 
 }
   const tableList=(
   <ul className="table-list">
-      {tables.map(item => (
+    {classifications.map(item => {
+      if(item.section === "table"){
+        return(
         <li key={item._id}>
-          <span key={item._id}>
-            Mesa: <strong>{item.number}</strong>
-          </span>
-          <span>
-            Lugares: <strong>{item.vacancies }</strong>
-          </span>
-          <span>
-            Disponibilidade: <strong>{item.availability=== true?"Disponivel":"Ocupada"}</strong>
-          </span>
-          <button className="direction" onClick={() => handleAvailability(item)}>
-            <img src={direction} alt="direction" />
-          </button>
-          <button className="exclude" onClick={() => handleDestroy(item)}>
-            <img src={exclude} alt="destroy" />
-          </button>
+          <h3>{item.classification}</h3>
+          <ul>
+          {tables.map(subItem => {
+            if(subItem.classification._id === item._id){
+              return(
+
+          <li key={subItem._id}>
+            <span key={subItem._id}>
+              Mesa: <strong>{subItem.number}</strong>
+            </span>
+            <span>
+              Lugares: <strong>{subItem.vacancies }</strong>
+            </span>
+            <span>
+              Disponibilidade: <strong>{subItem.availability=== true?"Disponivel":"Ocupada"}</strong>
+            </span>
+            <button className="direction" onClick={() => handleAvailability(subItem)}>
+              <img src={direction} alt="direction" />
+            </button>
+            <button className="exclude" onClick={() => handleDestroy(subItem)}>
+              <img src={exclude} alt="destroy" />
+            </button>
+          </li>
+        )}})
+      }
+          </ul>
         </li>
-      ))}
+
+       )}
+    })}
+
     </ul>
 
 
@@ -83,6 +101,7 @@ function loadTable(){
 }
   useEffect(() => {
     loadTable()
+    setClassifications(JSON.parse(localStorage.getItem("classification")))
   }, []);
   return (
 
@@ -107,12 +126,16 @@ function loadTable(){
               </fieldset>
               <fieldset>
                 <legend>Local</legend>
-                <input
-                  type="text"
-                  placeholder="local"
-                  name="classification"
-                  ref={register({ required: true, min: 0 })}
-                />
+                <select name="classification"  ref={register({ required: true })}>
+                  <option value=""></option>
+                  {classifications.map(item => {
+                    if(item.section === "table"){
+                      return(
+                      <option key={item._id} value={item._id}>{item.classification}</option>
+                      )
+                    }
+                  })}
+                </select>
               </fieldset>
               <fieldset>
                 <legend>Lugares</legend>

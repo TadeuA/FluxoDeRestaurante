@@ -26,7 +26,7 @@ module.exports = {
         classification
       });
     }
-    await table.populate("classification").exec()
+    await table.populate("classification").execPopulate()
     return res.json(table);
   },
 

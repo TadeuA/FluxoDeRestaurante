@@ -12,7 +12,10 @@
   min-width: 200px;
   background: chartreuse;
 }
-#listTable ul li {
+#listTable ul {
+  list-style: none;
+}
+#listTable ul li ul li {
   display: grid;
   grid-template-columns: repeat(3, 5fr) repeat(2, 1fr);
 }

@@ -11,15 +11,17 @@ export default function Dish() {
   const [dishs, setDishs] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [operation, setOperation] = useState("");
+  const [classifications, setClassifications] = useState([]);
 
   const [dish, setDish] = useState("");
 
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = async data => {
-    const { name, price } = data;
+    const { name, price, classification } = data;
     delete data.name;
     delete data.price;
+    delete data.classification
 
     for (let prop in data) {
       if (data[prop] === false) {
@@ -28,11 +30,16 @@ export default function Dish() {
     }
     const arr = Object.values(data);
 
-    api.post("/dish", {
+   const response = await api.post("/dish", {
       name,
       price,
-      ingredients: arr
+      ingredients: arr,
+      classification
     });
+
+    dishs.push(response.data)
+    localStorage.setItem("dishs",JSON.stringify(dishs))
+    setDishs(JSON.parse(localStorage.getItem("dishs")))
   };
 
   const preview = useMemo(() => {
@@ -52,7 +59,7 @@ export default function Dish() {
   useEffect(() => {
     setDishs(JSON.parse(localStorage.getItem("dishs")));
     setIngredients(JSON.parse(localStorage.getItem("ingredients")));
-
+    setClassifications(JSON.parse(localStorage.getItem("classification")))
     setOperation("0");
   }, []);
 
@@ -98,12 +105,25 @@ export default function Dish() {
                 />
               </fieldset>
               <fieldset>
+                <legend>Classificação</legend>
+                <select name="classification" ref={register({ required: true})}>
+                  <option value=""></option>
+                  {classifications.map(item => {
+                    if(item.section === "dish"){
+                      return(
+                        <option key={item._id}value={item._id}>{item.classification}</option>
+                      )
+                    }
+                  })}
+                </select>
+              </fieldset>
+              <fieldset>
                 <legend>ingredientes</legend>
                 <div id="listIngredient">
                   {ingredients.map(ingre => (
-                    <section>
+                    <section  key={ingre._id}>
                       <input
-                        key={ingre._id}
+
                         type="checkbox"
                         placeholder={ingre._id}
                         name={ingre._id}

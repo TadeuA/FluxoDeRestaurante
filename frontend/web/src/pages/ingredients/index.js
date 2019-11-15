@@ -7,6 +7,8 @@ import "./styles.css";
 import direction from "../../assets/button/direction.svg";
 import destroy from "../../assets/button/destroy.svg";
 
+
+
 export default function Ingredients() {
   const [ingredient, setIngredient] = useState([]);
   const [dishs, setDishs] = useState([]);

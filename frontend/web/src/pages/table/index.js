@@ -1,6 +1,7 @@
 import React, { useState, useEffect  } from "react";
 import useForm from "react-hook-form";
 import api from "../../services/api"
+import { Modal }  from  'react-bootstrap' ;
 
 import NavBar from "../../components/navBar";
 import HomeBar from "../../components/homeBar";
@@ -13,6 +14,11 @@ export default function Table() {
   const [tables, setTables]= useState([]);
   const { register, handleSubmit, errors } = useForm();
   const [classifications, setClassifications]= useState([])
+  const [smShow, setSmShow] = useState(false);
+
+  useEffect(()=>{
+    window.setTimeout(()=>{setSmShow(false)}, 3000)
+  },[smShow])
 
   const onSubmit = async data => {
     const { number, classification, vacancies } = data;
@@ -27,10 +33,25 @@ export default function Table() {
 
     localStorage.setItem("tables", JSON.stringify(tables))
     setTables(JSON.parse(localStorage.getItem("tables")));
-    window.alert(`mesa ${number} em ${classification} foi adicionado a lista de mesas!`);
+    setSmShow(true)
 
 
 }
+const newTable = (
+  <Modal
+        size="sm"
+        show={smShow}
+        onHide={() => setSmShow(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-sm">
+           Adicionado
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body> A mesa foi adicionado</Modal.Body>
+      </Modal>
+)
   const tableList=(
   <ul className="table-list">
     {classifications.map(item => {
@@ -152,6 +173,7 @@ function loadTable(){
         </div>
 
       </div>
+      {newTable}
     </>
   );
 }

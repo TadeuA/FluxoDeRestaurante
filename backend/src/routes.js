@@ -21,6 +21,8 @@ const UsersEdit = require("./controller/user/edit");
 const NewPass = require("./controller/user/newPass");
 //Types
 const TypeController = require("./controller/type/controller");
+//Command
+const CommandController = require("./controller/command/controller");
 
 // definindo responsavel pelas rotas
 const routes = express.Router();
@@ -74,6 +76,13 @@ routes.get("/types/:id", TypeController.show); //mostrar             r
 routes.put("/types/:id", TypeController.update); //atualizar         u
 routes.delete("/types/:id", TypeController.destroy); //deletar       d
 routes.get("/types", TypeController.index); //listar
+
+//Command
+routes.post("/command", CommandController.store); //criar                 c
+routes.get("/command/:id", CommandController.show); //mostrar             r
+routes.put("/command/:id", CommandController.update); //atualizar         u
+routes.delete("/command/:id", CommandController.destroy); //deletar       d
+routes.get("/command", CommandController.index); //listar
 
 // exportar esse arquivo
 module.exports = routes;

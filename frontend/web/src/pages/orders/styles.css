@@ -1,0 +1,56 @@
+#containerOrders {
+  display: flex;
+  flex-direction: row;
+}
+#alingOrders {
+  flex-direction: column;
+  width: 100%;
+}
+#navClass {
+  width: 100%;
+  height: 40px;
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  background: darkblue;
+  align-items: center;
+}
+#navClass header {
+  width: 100px;
+}
+#navClass header button {
+  background: none;
+  width: 100%;
+  border: none;
+  border-right: solid #000;
+}
+#listDish {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+#listDish header {
+  height: 200px;
+  width: 200px;
+  background: tomato;
+  margin: 5px;
+}
+#listDish header button {
+  height: 100%;
+  width: 100%;
+  background: none;
+  border: none;
+}
+
+.options div {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  max-height: 200px;
+}
+.options textarea {
+  overflow: auto;
+  height: 100px;
+  width: 100%;
+}

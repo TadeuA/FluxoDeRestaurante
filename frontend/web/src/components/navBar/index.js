@@ -12,6 +12,8 @@ import store from "../../assets/button/store.svg";
 
 export default function navBar() {
   return (
+    <>
+    <div id="space"></div>
     <div id="navBar">
       <Link to="/restaurant">
         <button id="restaurant" className="btn">
@@ -44,5 +46,6 @@ export default function navBar() {
         </button>
       </Link>
     </div>
+    </>
   );
 }

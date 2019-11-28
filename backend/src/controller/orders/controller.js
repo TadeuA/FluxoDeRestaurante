@@ -8,7 +8,7 @@ const Dish = require(path.resolve(__dirname,"..","..","models","Dish.js"));
 module.exports = {
    //Criar orders
     async store( req, res ){
-        const { extra, dish, amount , withdraw} = req.body;
+        const { extra, dish, amount , withdraw, ps} = req.body;
 
         const D = await Dish.findById(dish);
 
@@ -29,6 +29,7 @@ module.exports = {
           dish: D,
           withdraw,
           extra,
+          ps,
           amount,
           totalPrice
 

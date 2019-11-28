@@ -5,14 +5,19 @@ const mongoose = require('mongoose');
 // Construir "objeto" e definir seus campos no db
 const CommandSchema = new mongoose.Schema({
     number: Number,
+    costumer: String,
     salesman: String,
     destiny: String,
+    date: {
+      type: Date,
+      default: Date.now
+    },
     table: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Table'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Table'
     },
     adrress:{
-      zipCode: String,
+      zipCode: Number,
       number: Number,
       complement: String
     },

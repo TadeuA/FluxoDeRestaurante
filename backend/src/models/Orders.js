@@ -15,6 +15,7 @@ const OrdersSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Dish'
     }],
+    ps: String,
     amount: Number,
     totalPrice: Number
 });

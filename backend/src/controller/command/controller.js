@@ -8,14 +8,25 @@ module.exports = {
    //Criar Command
     async store( req, res ){
 
+
         const number = await Command.find().estimatedDocumentCount();
-        const { salesman, destiny, table, orders, totalPrice} = req.body
+        const { salesman, destiny, table, orders, adrress, costumer} = req.body
+        const orders_id =[]
+
+        let totalPrice = 0
+        orders.map(item => {
+          totalPrice += item.totalPrice
+          orders_id.push(item._id)
+        });
+
         const obj = {
           number,
+          costumer,
           salesman,
           destiny,
           table,
-          orders,
+          adrress,
+          orders: orders_id,
           totalPrice
         }
         let commands = await Command.create( obj );

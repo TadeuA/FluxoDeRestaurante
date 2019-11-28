@@ -9,7 +9,6 @@
 #navClass {
   width: 100%;
   height: 40px;
-  overflow-x: auto;
   white-space: nowrap;
   display: flex;
   flex-direction: row;
@@ -53,4 +52,145 @@
   overflow: auto;
   height: 100px;
   width: 100%;
+}
+/*div*/
+
+/*input*/
+#command {
+  position: absolute;
+}
+
+/*icon*/
+.command-icon {
+  font-size: 25px;
+  font-weight: 40px;
+  height: 100%;
+  text-align: center;
+  background-color: #5b859a;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.4s;
+  right: 0px;
+  position: fixed;
+  padding: 0;
+  width: 30px;
+  padding-top: 200px;
+}
+.command-icon p {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.command-icon:hover {
+  background-color: #fff;
+  color: #5b859a;
+}
+/*nav*/
+.command-menu {
+  height: 100%;
+  background-color: #222;
+  overflow: hidden;
+  transition: all 0.2s;
+  position: fixed;
+  right: 0;
+}
+#command-list {
+  width: 300px;
+  right: -300px;
+}
+#command-list ul:first-child {
+  list-style: none;
+  padding-top: 50px;
+  min-height: 500px;
+  max-height: 550px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#comand-list ul button {
+  position: fixed;
+  bottom: 0;
+}
+
+#command-list ul li {
+  display: block;
+  font-size: 16pt;
+  padding: 10px;
+  border: none;
+  border-bottom: solid 1px #000;
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.2s;
+  background: none;
+  width: 100%;
+}
+#command-list ul li span:first-child {
+  margin-right: 50px;
+}
+#command-list ul li button {
+  width: 20px;
+  background: none;
+  border: none;
+  float: right;
+}
+#command-list ul li button:hover {
+  width: 30px;
+  background: #f00;
+  border-radius: 5px;
+}
+
+#command-list ul li:hover {
+  background-color: #5b859a;
+}
+#command:checked ~ #command-list {
+  transform: translateX(-300px);
+}
+#command:checked ~ .command-icon {
+  transform: translateX(-300px);
+}
+.empty {
+  font-size: 20pt;
+  color: #fff;
+}
+.command-menu label {
+  font-size: 20pt;
+  color: #fff;
+  cursor: pointer;
+}
+#command-list ul li ul {
+  padding: 0;
+  color: #fff;
+  height: 0;
+  visibility: hidden;
+  height: 0px;
+  transition: all 0.7s;
+}
+#command-list ul li ul li {
+  transition: all 0.2s;
+  visibility: hidden;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+#command-list ul li:hover ul {
+  visibility: visible;
+  height: 100%;
+}
+#command-list ul li:hover ul li {
+  visibility: visible;
+}
+#confirm-command {
+  position: relative;
+  bottom: 0px;
+}
+#command-list ul li ul li span {
+  margin-left: 50px;
+}
+#command-list div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+#command-list div:first-child label {
+  font-size: 14pt;
 }

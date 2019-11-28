@@ -1,15 +1,18 @@
 import React, {useEffect, useState, useMemo} from "react";
+import api from "../../services/api";
 import NavBar from "../../components/navBar";
 import HomeBar from "../../components/homeBar";
-import { Modal } from 'react-bootstrap';
+import { Modal} from 'react-bootstrap';
 import useForm from "react-hook-form";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styles.css"
+import destroy from "../../assets/button/destroy.svg";
 
 
 
 
 export default function Orders() {
+  const [tables, setTables] = useState([])
   const [dishs, setDishs] = useState([]);
   const [classifications, setClassifications] = useState([]);
   const [category, setCategory] = useState("");
@@ -17,25 +20,212 @@ export default function Orders() {
   const [show, setShow] = useState(false);
   const [ingredients, setIngredients] = useState([])
   const [extra, setExtra] = useState([]);
-  const [price, setPrice] = useState();
+  const [command, setCommand] = useState([]);
   const { handleSubmit, register, errors } = useForm();
+  const [destiny, setDestiny] = useState(null);
+  const [classTable, setClassTable] = useState("")
+  const [table, setTable] = useState("")
+  const [user, setUser] = useState("")
 
-  const onSubmit = data => {
+
+  function nextRadio(){
+    setClassTable("")
+    setTable("")
+  }
+  function refresh(){
+    setCommand([])
+    nextRadio()
+    setDestiny(null)
+  }
+
+  useEffect(()=>{nextRadio()},[destiny])
+  const inSubmit = async data =>{
+    let obj ={
+      costumer : null,
+      salesman:user.name,
+      destiny,
+      table: null,
+      adrress: {
+        zipCode: null,
+        number: null,
+        complement: null
+      },
+      orders: command
+    }
+    console.log(destiny)
+    const {zipCode, number, complement, costumer} = data
+    switch (destiny) {
+      case 'tables':
+        obj.table = table
+        handleCommand(obj)
+        break;
+      case 'delivery':
+
+        obj.adrress = {
+          zipCode: zipCode,
+          number: number,
+          complement: complement
+        }
+        obj.costumer = costumer
+        handleCommand(obj)
+        break;
+      case 'take':
+
+        obj.costumer = costumer
+        handleCommand(obj)
+        break;
+      default:
+        console.log("selecione uma opção de destino");
+
+    }
+  }
+  async function handleCommand(obj){
+    const response = await api.post("command", obj)
+    console.log(response.data)
+    refresh()
+  }
+
+  const onSubmit = async data => {
     const { ps, amount } = data;
     delete data.ps;
     delete data.amount
-    let ingre = []
-    let ext = []
+    let withdraw = []
+    let extra = []
     for (let prop in data) {
       if (data[prop] === false) {
         delete data[prop];
-    }}
-    data = Object.values(data)
-
-
-    console.log(data);
-    console.log(ext);
+      }else{
+        dish.ingredients.map(item => {
+          if(item._id === data[prop]){
+            withdraw.push(data[prop])
+            delete data[prop]
+          }})
+        if(data[prop]){
+          extra.push(data[prop])
+          delete data[prop]
+        }
+      }
   }
+    const response = await api.post("orders",{
+      dish: dish._id,
+      withdraw,
+      extra,
+      ps,
+      amount
+    })
+    let arr = command
+    arr.push(response.data)
+
+    setCommand(arr)
+
+    handleClose()
+  }
+  const numTable =(
+     <>
+      <label>Local</label>
+      <select onChange={event => setClassTable(event.target.value)}>
+        <option value="" ></option>
+        {classifications.map( item => {
+          if(item.section === "table"){
+            return(
+            <option
+              key={item._id}
+              value={item.classification}
+            >
+              {item.classification}
+            </option>
+            )
+          }
+        })}
+      </select>
+      {classTable !== ""
+      ?<>
+        <label>Número da mesa</label>
+        <select onChange={event => setTable(event.target.value)}>
+          <option value=""></option>
+          {tables.map( item => {
+            if(item.classification.classification === classTable){
+              return(
+                <option value={item._id}>{item.number}</option>
+          )}})}
+      </select>
+      </>
+    :null}
+  </>
+  )
+
+  const delivery = <>
+      <label>Cliente: </label>
+      <input type="text" name="costumer"ref={register({ required: true })}/>
+      <label>CEP: </label>
+      <input type="number" name="zipCode" ref={register({ required: true })}/>
+      <label>Número</label>
+      <input type="number" name="number" ref={register({ required: true })}/>
+      <label>Complemento</label>
+      <input type="text" name="complement" ref={register({ required: false })}/>
+    </>
+
+  const costummer = <>
+    <label>Cliente: </label>
+    <input type="text" name="costumer" ref={register({ required: true })}/>
+    </>
+  const theDestiny = destiny === "tables"
+    ? <>{numTable}</>
+    :destiny === "delivery"
+      ?<>{delivery}</>
+      :destiny === "take"
+        ?<>{costummer}</>
+        :null
+
+  const theCommand = command.length > 0
+    ?(
+      <>
+      <ul>
+        {command.map(item => {
+          const index = (command.indexOf(item) +1 )
+            return(
+              <li key={item._id}>
+                <span>{index}</span>
+                <span>{item.amount}x {item.dish.name}</span>
+                <button><img src={destroy} alt="destroy"/></button>
+                <ul>
+                  <li>
+                    {item.withdraw.length > 0
+                      ?<div>
+                        <h5>Retirar: </h5>
+                        {item.withdraw.map(subitem =>(
+                          <span key={subitem._id}>
+                            {subitem.name}
+                          </span>
+                        ))}
+                      </div>
+                    :null}
+                    {item.extra.length > 0
+                      ?<div>
+                        <h5>Adicionar: </h5>
+                        {item.extra.map(subitem =>(
+                          <span key={subitem._id}>
+                            {subitem.name}
+                          </span>
+                        ))}
+                      </div>
+                    :null}
+                    {item.ps.length > 0
+                    ?<>
+                      <h5>Observação:</h5>
+                      <span>{item.ps}</span>
+                    </>
+                    :null }
+                    <h5>Valor R${item.totalPrice}</h5>
+                  </li>
+                </ul>
+              </li>
+        )})}
+      </ul>
+      <button id="confirm-command" type="submit">Confirmar</button>
+      </>
+    )
+    :(<span className="empty">Comanda vazia</span>)
 
   function handleClose(){
     setShow(false);
@@ -43,11 +233,12 @@ export default function Orders() {
  function handleShow(item){
    setDish(item)
    setIngredients(item.ingredients)
-   setPrice(item.price)
    setShow(true);
   }
 
   useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem("user")))
+    setTables(JSON.parse(localStorage.getItem("tables")))
     const arr = JSON.parse(localStorage.getItem("dishs"))
     setDishs(arr);
     setClassifications(JSON.parse(localStorage.getItem("classification")));
@@ -66,7 +257,7 @@ export default function Orders() {
     return(
       <div id="navClass">
       {classifications.map(item => {
-        if(item.section === "dish"){
+        if(item.section === "dish" && item.classification !== "Extra"){
           return(
             <header key={item._id}>
               <button onClick={() => setCategory(item.classification)}>
@@ -122,7 +313,7 @@ export default function Orders() {
                 key={item._id}
                 type="checkbox"
                 name={item.name}
-                value={JSON.stringify(item)}
+                value={item._id}
                 ref={register}
 
               />
@@ -140,7 +331,7 @@ export default function Orders() {
                 key={item._id}
                 type="checkbox"
                 name={item.name}
-                value={JSON.stringify(item)}
+                value={item._id}
                 ref={register}
 
               />
@@ -160,6 +351,7 @@ export default function Orders() {
                 name="amount"
                 ref={register}
                 min="1"
+                required
             />
             <button variant="secondary" onClick={handleClose}>
               Close
@@ -181,6 +373,32 @@ export default function Orders() {
         {navClassifications}
         {listDish}
         </div>
+
+      <input type="checkbox" id="command"hidden />
+      <label htmlFor="command" className="command-icon"><p>Comanda</p> </label>
+
+      <nav className="command-menu" id="command-list" >
+        <form onSubmit={handleSubmit(inSubmit)}>
+          <div>
+            <div>
+              <label htmlFor="tables">Mesa</label>
+              <input type="radio" name="destiny" onChange={() => setDestiny("tables")} />
+            </div>
+            <div>
+              <label htmlFor="delivery">Entrega</label>
+              <input type="radio" name="destiny" onChange={() => setDestiny("delivery")}/>
+            </div>
+            <div>
+              <label htmlFor="take">Levar</label>
+              <input type="radio" name="destiny" onChange={() => setDestiny("take")}/>
+            </div>
+          </div>
+          {theDestiny}
+          <br/>
+          {theCommand}
+        </form>
+      </nav>
+
       </div>
       {modal}
     </>
